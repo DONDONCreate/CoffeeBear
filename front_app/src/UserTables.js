@@ -7,11 +7,13 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 /**
  * A simple table demonstrating the hierarchy of the `Table` component and its sub-components.
  */
 const UserTables = () => (
+<MuiThemeProvider>
   <Table>
     <TableHeader
         displaySelectAll={false}
@@ -23,8 +25,7 @@ const UserTables = () => (
         <TableHeaderColumn>Status</TableHeaderColumn>
       </TableRow>
     </TableHeader>
-    <TableBody displayRowCheckbox={false}>
-      <TableRow>
+    <TableBody displayRowCheckbox={false}> <TableRow>
         <TableRowColumn>1</TableRowColumn>
         <TableRowColumn>John Smith</TableRowColumn>
         <TableRowColumn>Employed</TableRowColumn>
@@ -51,6 +52,7 @@ const UserTables = () => (
       </TableRow>
     </TableBody>
   </Table>
+</MuiThemeProvider>
 );
 
 export default UserTables;
