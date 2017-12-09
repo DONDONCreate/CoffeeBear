@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import UserTables from './UserTables';
-import './App.css';
+import '../css/App.css';
 
 
 class App extends Component {
@@ -10,11 +10,11 @@ class App extends Component {
             <div className="App">
                 <div class="flex">
                 <div>
-                <p>Not Done</p>
+                <h1>Not Done</h1>
                 <UserTables />
                 </div>
                 <div>
-                <p>Done</p>
+                <h1>Done</h1>
                 <UserTables />
                 </div>
                 </div>

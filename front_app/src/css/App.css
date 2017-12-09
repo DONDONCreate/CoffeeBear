@@ -11,5 +11,5 @@
     /* background-color: #eebb55; border: thin solid black; */
     /* border-radius: 10px; */
 }
-.flex > div > p { text-align: center; } h1, p { margin: 0; }
+.flex > div > h1, p { text-align: center; } h1, p { margin: 0; }
 
