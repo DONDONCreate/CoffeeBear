@@ -4,7 +4,9 @@
     /*justify-content: space-around;*/
     /*align-items: baseline;*/
     height: 100px;
-    width:70%;
+    width:100%;
+    margin: 0 auto;
+    margin-top:15px;
 }
 .flex > div {
     padding-left: 5px; padding-right: 5px;
