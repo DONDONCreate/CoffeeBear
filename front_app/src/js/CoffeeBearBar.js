@@ -7,21 +7,21 @@ import MenuItem from 'material-ui/MenuItem';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 
 const HeaderIcon = () => (
-  <IconMenu
-    iconButtonElement={<IconButton><MenuIcon color={'white'} /></IconButton>}
-    anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-    targetOrigin={{horizontal: 'left', vertical: 'top'}}
-  >
-    <MenuItem>
-    hello
-   </MenuItem>
-   <MenuItem>
-    hello
-   </MenuItem>
-   <MenuItem>
-    hello
-   </MenuItem>
- </IconMenu>
+    <IconMenu
+        iconButtonElement={<IconButton><MenuIcon color={'white'} /></IconButton>}
+        anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+        targetOrigin={{horizontal: 'left', vertical: 'top'}}
+    >
+        <MenuItem>
+            hello
+        </MenuItem>
+        <MenuItem>
+            hello
+        </MenuItem>
+        <MenuItem>
+            hello
+        </MenuItem>
+    </IconMenu>
 );
 
 
@@ -30,13 +30,13 @@ const HeaderIcon = () => (
  * By default, the left icon is a navigation-menu.
  */
 const CoffeeBearBar = () => (
-<MuiThemeProvider>
-  <AppBar
-    title="CoffeeBear"
-    iconClassNameRight="muidocs-icon-navigation-expand-more"
-    iconElementLeft={<HeaderIcon />}
-  />
-</MuiThemeProvider>
+    <MuiThemeProvider>
+        <AppBar
+            title="CoffeeBear"
+            iconClassNameRight="muidocs-icon-navigation-expand-more"
+            iconElementLeft={<HeaderIcon />}
+        />
+    </MuiThemeProvider>
 );
 
 export default CoffeeBearBar;
