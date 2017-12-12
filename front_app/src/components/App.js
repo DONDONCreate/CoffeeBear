@@ -12,7 +12,16 @@ class App extends Component {
                 <CoffeeBearBar />
             </header>
                 <AddUser />
-                <UserList />
+                <div class="flex">
+                    <div>
+                    <p>Not Done</p>
+                    <UserList />
+                    </div>
+                    <div>
+                    <p>Done</p>
+                    <UserList />
+                    </div>
+                </div>
             </div>
         );
     }
