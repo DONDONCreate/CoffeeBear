@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import UserTables from './UserTables';
 import CoffeeBearBar from './CoffeeBearBar';
 import '../css/App.css';
-
+import { Provider } from 'react-redux';
+import Store from './store'
 
 class App extends Component {
 
