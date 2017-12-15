@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
 import users from './users'
+import repos from './repos'
 
-const App = combineReducers({
-  users
+const rootReducer = combineReducers({
+    users,
+    repos
 })
 
-export default App
+export default rootReducer

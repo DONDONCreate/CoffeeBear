@@ -8,12 +8,21 @@ Table,
     TableRowColumn,
 } from 'material-ui/Table';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import loadRepos from '../actions'
+import { connect } from 'react-redux'
+
 
 class UserTable extends React.Component {
     constructor(props) {
         super(props)
         this.props = props
     }
+
+    componentDidMount() {
+        const { dispatch } = this.props
+        dispatch(loadRepos())
+    }
+
 
     render(){
         return(
@@ -30,6 +39,7 @@ class UserTable extends React.Component {
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false}>
+                        {console.log(this.props.repos)}
                         {this.props.users.map(user =>
                             <TableRow key={user.id}>
                                 <TableRowColumn>{user.id}</TableRowColumn>
@@ -44,4 +54,11 @@ class UserTable extends React.Component {
     }
 }
 
-export default UserTable;
+function mapStateToProps(state) {
+  const { repos } = state
+    return {
+        repos
+  }
+}
+
+export default connect(mapStateToProps)(UserTable);
