@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addUser } from '../actions'
 
-let AddTodo = ({ dispatch }) => {
+// AddUserするcontainer
+let AddUser = ({ dispatch }) => {
   let input
 
   return (
@@ -25,6 +26,6 @@ let AddTodo = ({ dispatch }) => {
     </div>
   )
 }
-AddTodo = connect()(AddTodo)
+AddUser = connect()(AddUser)
 
-export default AddTodo
+export default AddUser

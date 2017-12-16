@@ -11,7 +11,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import loadRepos from '../actions'
 import { connect } from 'react-redux'
 
-
+// UserTable
 class UserTable extends React.Component {
     constructor(props) {
         super(props)
@@ -27,7 +27,9 @@ class UserTable extends React.Component {
     render(){
         return(
             <MuiThemeProvider>
-                <Table>
+                <Table onCellClick={(event) => {
+                    this.props.onClick(this.props.users[event].id)}
+                }>
                     <TableHeader
                         displaySelectAll={false}
                         adjustForCheckbox={false}
@@ -35,16 +37,13 @@ class UserTable extends React.Component {
                         <TableRow>
                             <TableHeaderColumn>ID</TableHeaderColumn>
                             <TableHeaderColumn>Name</TableHeaderColumn>
-                            <TableHeaderColumn>Status</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false}>
-                        {console.log(this.props.repos)}
                         {this.props.users.map(user =>
                             <TableRow key={user.id}>
                                 <TableRowColumn>{user.id}</TableRowColumn>
                                 <TableRowColumn>{user.text}</TableRowColumn>
-                                <TableRowColumn>{user.status}</TableRowColumn>
                             </TableRow>
                         )}
                     </TableBody>
@@ -54,6 +53,7 @@ class UserTable extends React.Component {
     }
 }
 
+// GETでもらってきたデータをstateして登録
 function mapStateToProps(state) {
   const { repos } = state
     return {

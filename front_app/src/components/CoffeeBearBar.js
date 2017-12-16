@@ -6,6 +6,7 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 
+// Header
 const HeaderIcon = () => (
     <IconMenu
         iconButtonElement={<IconButton><MenuIcon color={'white'} /></IconButton>}

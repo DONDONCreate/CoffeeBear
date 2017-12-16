@@ -4,6 +4,7 @@ import '../css/App.css';
 import AddUser from '../containers/AddUser'
 import UserList from '../containers/UserList'
 
+// Main View
 class App extends Component {
     render() {
         return (
@@ -15,11 +16,11 @@ class App extends Component {
                 <div class="flex">
                     <div>
                     <p>Not Done</p>
-                    <UserList />
+                    <UserList isDone={false}/>
                     </div>
                     <div>
                     <p>Done</p>
-                    <UserList />
+                    <UserList isDone={true}/>
                     </div>
                 </div>
             </div>
