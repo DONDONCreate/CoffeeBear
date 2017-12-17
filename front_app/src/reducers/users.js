@@ -10,8 +10,8 @@ const users = (state = [], action) => {
                 }
             ]
         case 'CHANGE_USER_STATUS':
-            return state.map((user, index) => {
-                if (index === action.index) {
+            return state.map((user) => {
+                if (user.id === action.id) {
                     return Object.assign({}, user, {
                         status: !user.status
                     })
@@ -19,6 +19,8 @@ const users = (state = [], action) => {
                     return Object.assign({}, user)
                 }
             })
+        case 'REMOVE_USERS':
+            return state.filter(n => n.id !== action.id)
         default:
             return state
     }

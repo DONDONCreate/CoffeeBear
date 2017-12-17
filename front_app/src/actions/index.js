@@ -10,10 +10,17 @@ export const addUser = (text) => ({
     text
 })
 
-export function changeUserStatus(index) {
+export function removeUsers(id) {
+    return {
+        type: 'REMOVE_USERS',
+        id
+    };
+}
+
+export function changeUserStatus(id) {
     return {
         type: 'CHANGE_USER_STATUS',
-        index
+        id
     };
 }
 

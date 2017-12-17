@@ -7,8 +7,9 @@ Table,
     TableRow,
     TableRowColumn,
 } from 'material-ui/Table';
+import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import loadRepos from '../actions'
+import loadRepos, { removeUsers } from '../actions'
 import { connect } from 'react-redux'
 
 // UserTable
@@ -23,27 +24,42 @@ class UserTable extends React.Component {
         dispatch(loadRepos())
     }
 
+    clickButton(id) {
+        const { dispatch } = this.props
+        let myRet = window.confirm("本当に削除しますか？");
+        if ( myRet === true ){
+            dispatch(removeUsers(id))
+        }else{
+            alert("削除がキャンセルされました");
+        }
+    }
 
     render(){
         return(
             <MuiThemeProvider>
-                <Table onCellClick={(event) => {
-                    this.props.onClick(this.props.users[event].id)}
-                }>
+                <Table
+                    fixedHeader={true}
+                    selectable={true}
+                    multiSelectable={true}
+                >
                     <TableHeader
                         displaySelectAll={false}
                         adjustForCheckbox={false}
+                        enableSelectAll={false}
                     >
                         <TableRow>
-                            <TableHeaderColumn>ID</TableHeaderColumn>
                             <TableHeaderColumn>Name</TableHeaderColumn>
+                            <TableHeaderColumn></TableHeaderColumn>
+                            <TableHeaderColumn></TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false}>
+                        {console.log(this.props.users)}
                         {this.props.users.map(user =>
                             <TableRow key={user.id}>
-                                <TableRowColumn>{user.id}</TableRowColumn>
-                                <TableRowColumn>{user.text}</TableRowColumn>
+                                <TableRowColumn  style={{backgroundColor:user.status ? '#2196F3' : '#F44336', color: 'white',}}>{user.text}</TableRowColumn>
+                                <TableRowColumn  style={{backgroundColor:user.status ? '#2196F3' : '#F44336', color: 'white',}}><RaisedButton onClick={() => this.props.onClick(user.id)} label="Status変更" /></TableRowColumn>
+                                <TableRowColumn  style={{backgroundColor: user.status ? '#2196F3' : '#F44336', color: 'white',}}><RaisedButton onClick={() => this.clickButton(user.id)} label="削除"/></TableRowColumn>
                             </TableRow>
                         )}
                     </TableBody>
