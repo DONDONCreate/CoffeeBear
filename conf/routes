@@ -8,3 +8,6 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 # CoffeeBear
 GET     /coffee                     controllers.CoffeeController.selectCoffeeAction
 POST    /coffee                     controllers.CoffeeController.insertCoffeeAction
+
+GET /me   controllers.Application.message
+POST /cee  controllers.Application.cee

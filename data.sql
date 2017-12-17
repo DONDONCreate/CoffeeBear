@@ -12,3 +12,7 @@ CREATE TABLE coffee_history(
     year int NOT NULL,
     month int NOT NULL
 );
+CREATE TABLE message(
+    id int NOT NULL,
+    text_name varchar(128) NOT NULL
+);
