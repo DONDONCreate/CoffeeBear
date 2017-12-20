@@ -2,7 +2,7 @@ package models.database
 
 import play.api.libs.json._
 
-case class Message (id: Int, text_name: String)
+case class Message (id: Option[Long], id_name: Int, text_name: String)
 
 object Message {
   implicit val messageWrites = Json.writes[Message]
