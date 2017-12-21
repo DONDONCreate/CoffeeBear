@@ -38,7 +38,9 @@ class UserTable extends React.Component {
         return(
             <MuiThemeProvider>
                 <Table
+                    height={'255px'}
                     fixedHeader={true}
+                    fixedFooter={true}
                     selectable={true}
                     multiSelectable={true}
                 >
@@ -48,6 +50,7 @@ class UserTable extends React.Component {
                         enableSelectAll={false}
                     >
                         <TableRow>
+                            <TableHeaderColumn>ID</TableHeaderColumn>
                             <TableHeaderColumn>Name</TableHeaderColumn>
                             <TableHeaderColumn></TableHeaderColumn>
                             <TableHeaderColumn></TableHeaderColumn>
@@ -57,10 +60,11 @@ class UserTable extends React.Component {
                         {console.log(this.props.users)}
                         {this.props.users.map(user =>
                             <TableRow key={user.id}>
-                                <TableRowColumn  style={{backgroundColor:user.status ? '#2196F3' : '#F44336', color: 'white',}}>{user.text}</TableRowColumn>
-                                <TableRowColumn  style={{backgroundColor:user.status ? '#2196F3' : '#F44336', color: 'white',}}><RaisedButton onClick={() => this.props.onClick(user.id)} label="Status変更" /></TableRowColumn>
-                                <TableRowColumn  style={{backgroundColor: user.status ? '#2196F3' : '#F44336', color: 'white',}}><RaisedButton onClick={() => this.clickButton(user.id)} label="削除"/></TableRowColumn>
-                            </TableRow>
+                                <TableRowColumn  style={{backgroundColor:user.status ? '#2196F3' : '#F44336', }}>{user.id}</TableRowColumn>
+                                <TableRowColumn  style={{backgroundColor:user.status ? '#2196F3' : '#F44336', }}>{user.text}</TableRowColumn>
+                                <TableRowColumn  style={{backgroundColor:user.status ? '#2196F3' : '#F44336', }}><RaisedButton onClick={() => this.props.onClick(user.id)} label="Status変更" /></TableRowColumn>
+                                <TableRowColumn  style={{backgroundColor: user.status ? '#2196F3' : '#F44336', }}><RaisedButton onClick={() => this.clickButton(user.id)} label="削除"/></TableRowColumn>
+                    </TableRow>
                         )}
                     </TableBody>
                 </Table>
