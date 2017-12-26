@@ -31,11 +31,26 @@ class UserDAO @Inject()(val dbConfigProvider: DatabaseConfigProvider) {
 
   private val users = TableQuery[UserTable]
 
-  def all(): Future[List[User]] = dbConfig.db.run(users.result).map(_.toList)
+  //
+  def all(): Future[List[User]] = dbConfig.db.run(users.to[List].result)
 
-  def create(name: String, is_payment: Boolean){
-    dbConfig.db.run(
-      users += User(null,name,is_payment)
-    )
-  }
+  //作成
+  def create(user: User):
+  Future[Int] = dbConfig.db.run(users += User(null,user.name,user.is_payment))
+
+  def updatePayment(user: User):
+  Future[Int] = dbConfig.db.run(users.to[List].filter(_.name === user.name).map(_.is_payment).update(user.is_payment))
+
+  def findByName(name: String):
+  Future[List[User]] = dbConfig.db.run(users.to[List].filter(_.name === name).result)
+
+  def findById(id: Long):
+  Future[List[User]] = dbConfig.db.run(users.to[List].filter(_.id === id).result)
+
+  def findByPayment(payment: Boolean):
+  Future[List[User]] = dbConfig.db.run(users.to[List].filter(_.is_payment === payment).result)
+
+  def delete(name: String):
+  Future[Int] = dbConfig.db.run(users.to[List].filter(_.name === name).delete)
+
 }

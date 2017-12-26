@@ -7,7 +7,10 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 # CoffeeBear
 
-GET /coffee   controllers.Application.message
-POST /coffee  controllers.Application.messageCreate
 GET /user   controllers.Application.user
-POST /user  controllers.Application.userCreate
+POST /userCreate  controllers.Application.userCreate
+POST /userFindByName  controllers.Application.userFindByName
+POST /userFindById   controllers.Application.userFindById
+POST /userFindByPayment   controllers.Application.userFindByPayment
+PUT /userUpdate   controllers.Application.userUpdate
+DELETE /userDelete   controllers.Application.userDelete
