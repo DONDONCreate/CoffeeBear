@@ -31,13 +31,15 @@ const HeaderIcon = () => (
  * By default, the left icon is a navigation-menu.
  */
 const CoffeeBearBar = () => (
-    <MuiThemeProvider>
-        <AppBar
-            title="CoffeeBear"
-            iconClassNameRight="muidocs-icon-navigation-expand-more"
-            iconElementLeft={<HeaderIcon />}
-        />
-    </MuiThemeProvider>
+    <header>
+        <MuiThemeProvider>
+            <AppBar
+                title="CoffeeBear"
+                iconClassNameRight="muidocs-icon-navigation-expand-more"
+                iconElementLeft={<HeaderIcon />}
+            />
+        </MuiThemeProvider>
+    </header>
 );
 
 export default CoffeeBearBar;

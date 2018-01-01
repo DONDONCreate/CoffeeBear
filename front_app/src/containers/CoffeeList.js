@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import UserTable from '../components/UserTable'
+import CoffeeBar from '../components/CoffeeBar'
 import { changeUserStatus } from '../actions'
 
 const getFilteredUsers = (users, isDone) => {
@@ -7,8 +7,7 @@ const getFilteredUsers = (users, isDone) => {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  users: getFilteredUsers(state.users, ownProps.isDone),
-  isDone: ownProps.isDone
+  users: getFilteredUsers(state.users, ownProps.isDone)
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -17,9 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-const UserList = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(UserTable)
+const CoffeeList = connect(
+)(CoffeeBar)
 
-export default UserList
+export default CoffeeList

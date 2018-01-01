@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-Table,
+    Table,
     TableBody,
     TableHeader,
     TableHeaderColumn,
@@ -31,44 +31,47 @@ class UserTable extends React.Component {
             dispatch(removeUsers(id))
         }else{
             alert("削除がキャンセルされました");
-        }
+  }
     }
 
     render(){
         return(
-            <MuiThemeProvider>
-                <Table
-                    height={'255px'}
-                    fixedHeader={true}
-                    fixedFooter={true}
-                    selectable={true}
-                    multiSelectable={true}
-                >
-                    <TableHeader
-                        displaySelectAll={false}
-                        adjustForCheckbox={false}
-                        enableSelectAll={false}
-                    >
-                        <TableRow>
-                            <TableHeaderColumn>ID</TableHeaderColumn>
-                            <TableHeaderColumn>Name</TableHeaderColumn>
-                            <TableHeaderColumn></TableHeaderColumn>
-                            <TableHeaderColumn></TableHeaderColumn>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody displayRowCheckbox={false}>
-                        {console.log(this.props.users)}
-                        {this.props.users.map(user =>
+        <div style={{border: this.props.isDone ? '2px solid #2196F3' : '2px solid #F44336', height:'365px'}}>
+          <div align='center'>{this.props.isDone ? 'Done' : 'Not Done' }</div>
+          <MuiThemeProvider>
+            <Table
+              height={'285px'}
+              fixedHeader={true}
+              fixedFooter={true}
+              selectable={true}
+              multiSelectable={true}
+            >
+              <TableHeader
+                displaySelectAll={false}
+                adjustForCheckbox={false}
+                enableSelectAll={false}
+              >
+                <TableRow>
+                  <TableHeaderColumn>ID</TableHeaderColumn>
+                  <TableHeaderColumn>Name</TableHeaderColumn>
+                  <TableHeaderColumn></TableHeaderColumn>
+                  <TableHeaderColumn></TableHeaderColumn>
+                </TableRow>
+              </TableHeader>
+              <TableBody displayRowCheckbox={false}>
+                {console.log(this.props.users)}
+                {this.props.users.map(user =>
                             <TableRow key={user.id}>
-                                <TableRowColumn  style={{backgroundColor:user.status ? '#2196F3' : '#F44336', }}>{user.id}</TableRowColumn>
-                                <TableRowColumn  style={{backgroundColor:user.status ? '#2196F3' : '#F44336', }}>{user.text}</TableRowColumn>
-                                <TableRowColumn  style={{backgroundColor:user.status ? '#2196F3' : '#F44336', }}><RaisedButton onClick={() => this.props.onClick(user.id)} label="Status変更" /></TableRowColumn>
-                                <TableRowColumn  style={{backgroundColor: user.status ? '#2196F3' : '#F44336', }}><RaisedButton onClick={() => this.clickButton(user.id)} label="削除"/></TableRowColumn>
-                    </TableRow>
+                              <TableRowColumn  >{user.id}</TableRowColumn>
+                              <TableRowColumn  >{user.text}</TableRowColumn>
+                              <TableRowColumn  ><RaisedButton onClick={() => this.props.onClick(user.id)} label="Status変更" /></TableRowColumn>
+                              <TableRowColumn  ><RaisedButton onClick={() => this.clickButton(user.id)} label="削除"/></TableRowColumn>
+                            </TableRow>
                         )}
-                    </TableBody>
-                </Table>
-            </MuiThemeProvider>
+                      </TableBody>
+                    </Table>
+                  </MuiThemeProvider>
+                </div>
         )
     }
 }
