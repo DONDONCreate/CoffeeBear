@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addUser } from '../actions'
+import { createUser } from '../actions'
 
 // AddUserするcontainer
 let AddUser = ({ dispatch }) => {
@@ -13,7 +13,7 @@ let AddUser = ({ dispatch }) => {
         if (!input.value.trim()) {
           return
         }
-        dispatch(addUser(input.value))
+        dispatch(createUser(input.value))
         input.value = ''
       }}>
         <input ref={node => {

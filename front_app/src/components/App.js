@@ -11,7 +11,7 @@ class App extends Component {
             <div className="App">
               <CoffeeBearBar />
               <AddUser />
-              <div class="flex" style={{height:"400px"}} >
+              <div className="flex" style={{height:"400px"}} >
                 <div>
                   <UserList isDone={false}/>
                 </div>
