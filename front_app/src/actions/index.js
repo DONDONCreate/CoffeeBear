@@ -1,29 +1,6 @@
 import axios from 'axios';
 import * as types from './actionTypes';
 
-// User追加アクション
-let nextTodoId = 0
-export const addUser = (text) => ({
-    type: 'ADD_USER',
-    id: nextTodoId++,
-    status: false,
-    text
-})
-
-export function removeUsers(id) {
-    return {
-        type: 'REMOVE_USERS',
-        id
-    };
-}
-
-export function changeUserStatus(id) {
-    return {
-        type: 'CHANGE_USER_STATUS',
-        id
-    };
-}
-
 // ロードが完了した時に呼ばれるアクション
 export function loadReposSuccess(repos) {
     return {
@@ -40,6 +17,79 @@ export default function loadRepos() {
             .then(repos => {
                 dispatch(loadReposSuccess(repos.data));
                 // console.warn(repos.data);
+            })
+            .catch(err => {
+                throw err;
+            });
+    };
+}
+
+// UserList取得成功
+export function getUserSuccess(users) {
+    return {
+        type: 'GET_USER_SUCCESS',
+        users
+    };
+}
+
+// UserList取得
+export function getUser() {
+    return function(dispatch) {
+        return axios
+            .get('/user')
+            .then(users => {
+                dispatch(getUserSuccess(users.data));
+                // console.warn(repos.data);
+            })
+            .catch(err => {
+                throw err;
+            });
+    };
+}
+
+// User追加
+export function createUser(text) {
+    return function(dispatch) {
+        return axios.post('/user', {
+              is_payment: false,
+              name: text
+            },{
+              headers: {'Content-Type': 'application/json'}
+            })
+            .then(user => {
+                // dispatch(addUser(text));
+                dispatch(getUser());
+                console.warn(user);
+            })
+            .catch(err => {
+                throw err;
+            });
+    };
+}
+
+// User情報変更(patch)
+export function updateUser(id) {
+    return function(dispatch) {
+        return axios.patch('/user/' + id)
+            .then(user => {
+                // dispatch(addUser(text));
+                dispatch(getUser());
+                console.warn(user);
+            })
+            .catch(err => {
+                throw err;
+            });
+    };
+}
+
+// User情報削除
+export function deleteUser(id) {
+    return function(dispatch) {
+        return axios.delete('/user/' + id)
+            .then(user => {
+                // dispatch(addUser(text));
+                dispatch(getUser());
+                console.warn(user);
             })
             .catch(err => {
                 throw err;

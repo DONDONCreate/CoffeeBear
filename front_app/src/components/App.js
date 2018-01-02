@@ -9,20 +9,16 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-            <header>
-                <CoffeeBearBar />
-            </header>
-                <AddUser />
-                <div class="flex">
-                    <div>
-                    <p>Not Done</p>
-                    <UserList isDone={false}/>
-                    </div>
-                    <div>
-                    <p>Done</p>
-                    <UserList isDone={true}/>
-                    </div>
+              <CoffeeBearBar />
+              <AddUser />
+              <div className="flex" style={{height:"400px"}} >
+                <div>
+                  <UserList isDone={false}/>
                 </div>
+                <div>
+                  <UserList isDone={true}/>
+                </div>
+              </div>
             </div>
         );
     }

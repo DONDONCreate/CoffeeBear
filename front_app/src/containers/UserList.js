@@ -1,18 +1,19 @@
 import { connect } from 'react-redux'
 import UserTable from '../components/UserTable'
-import { changeUserStatus } from '../actions'
+import { updateUser } from '../actions'
 
 const getFilteredUsers = (users, isDone) => {
-    return users.filter(u => u.status === isDone);
+    return users.filter(u => u.is_payment === isDone);
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  users: getFilteredUsers(state.users, ownProps.isDone)
+  users: getFilteredUsers(state.users, ownProps.isDone),
+  isDone: ownProps.isDone
 })
 
 const mapDispatchToProps = (dispatch) => ({
     onClick: (index) => {
-      dispatch(changeUserStatus(index))
+      dispatch(updateUser(index))
   }
 })
 

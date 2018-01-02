@@ -21,6 +21,8 @@ const users = (state = [], action) => {
             })
         case 'REMOVE_USERS':
             return state.filter(n => n.id !== action.id)
+        case 'GET_USER_SUCCESS':
+            return action.users
         default:
             return state
     }
