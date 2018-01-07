@@ -36,7 +36,7 @@ export function getUserSuccess(users) {
 export function getUser() {
     return function(dispatch) {
         return axios
-            .get('/user')
+            .get('/users')
             .then(users => {
                 dispatch(getUserSuccess(users.data));
                 // console.warn(repos.data);
@@ -50,7 +50,7 @@ export function getUser() {
 // User追加
 export function createUser(text) {
     return function(dispatch) {
-        return axios.post('/user', {
+        return axios.post('/users', {
               is_payment: false,
               name: text
             },{
@@ -70,7 +70,7 @@ export function createUser(text) {
 // User情報変更(patch)
 export function updateUser(id) {
     return function(dispatch) {
-        return axios.patch('/user/' + id)
+        return axios.patch('/users/' + id)
             .then(user => {
                 // dispatch(addUser(text));
                 dispatch(getUser());
@@ -85,7 +85,7 @@ export function updateUser(id) {
 // User情報削除
 export function deleteUser(id) {
     return function(dispatch) {
-        return axios.delete('/user/' + id)
+        return axios.delete('/users/' + id)
             .then(user => {
                 // dispatch(addUser(text));
                 dispatch(getUser());
