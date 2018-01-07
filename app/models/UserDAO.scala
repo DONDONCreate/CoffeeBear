@@ -38,8 +38,15 @@ class UserDAO @Inject()(val dbConfigProvider: DatabaseConfigProvider) {
   def create(user: User):
   Future[Int] = dbConfig.db.run(users += User(null,user.name,user.is_payment))
 
-  def updatePayment(user: User):
-  Future[Int] = dbConfig.db.run(users.to[List].filter(_.name === user.name).map(_.is_payment).update(user.is_payment))
+  // def updatePayment(user: User):
+  // Future[Int] = dbConfig.db.run(users.to[List].filter(_.id === user.id).map(_.is_payment).update(user.is_payment))
+
+  // is_paymentをtrue, false入れ替える
+  def patchPayment(user: User):
+  Future[Int] = dbConfig.db.run(users.to[List].filter(_.id === user.id).map(_.is_payment).update(!user.is_payment))
+
+  // def updatePayment(id: Long):
+  // Future[Int] = dbConfig.db.run(users.to[List].filter(_.id === id).map(_.is_payment).update(false))
 
   def findByName(name: String):
   Future[List[User]] = dbConfig.db.run(users.to[List].filter(_.name === name).result)
@@ -50,7 +57,10 @@ class UserDAO @Inject()(val dbConfigProvider: DatabaseConfigProvider) {
   def findByPayment(payment: Boolean):
   Future[List[User]] = dbConfig.db.run(users.to[List].filter(_.is_payment === payment).result)
 
-  def delete(name: String):
-  Future[Int] = dbConfig.db.run(users.to[List].filter(_.name === name).delete)
+  // def delete(name: String):
+  // Future[Int] = dbConfig.db.run(users.to[List].filter(_.name === name).delete)
+
+  def delete(id: Long):
+  Future[Int] = dbConfig.db.run(users.to[List].filter(_.id === id).delete)
 
 }

@@ -5,6 +5,7 @@ services:
         ports:
             - "3306:3306"
         hostname: dbserver
+        container_name: dbserver
         volumes:
             - ./mysql:/var/lib/mysql
         environment:

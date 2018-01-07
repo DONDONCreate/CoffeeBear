@@ -7,10 +7,16 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 # CoffeeBear
 
-GET /user   controllers.Application.user
-POST /userCreate  controllers.Application.userCreate
-POST /userFindByName  controllers.Application.userFindByName
-POST /userFindById   controllers.Application.userFindById
-POST /userFindByPayment   controllers.Application.userFindByPayment
-PUT /userUpdate   controllers.Application.userUpdate
-DELETE /userDelete   controllers.Application.userDelete
+GET /users   controllers.Application.user
+POST /users  controllers.Application.userCreate
+# POST /usersFindByName  controllers.Application.usersFindByName
+# POST /usersFindById   controllers.Application.usersFindById
+# POST /usersFindByPayment   controllers.Application.usersFindByPayment
+#
+# GET /users/:name controllers.Application.usersFindByName(name: String)
+GET /users/:id controllers.Application.userFindById(id: Long)
+# GET /users/:is_payment controllers.Application.usersFindByPayment(is_payment: Boolean)
+#
+# PUT /users/:id   controllers.Application.usersUpdate(id) PUTを利用するタイミングはおそらくないですが，一応いるかも
+DELETE /users/:id   controllers.Application.userDelete(id: Long)
+PATCH /users/:id   controllers.Application.userPatch(id: Long)
